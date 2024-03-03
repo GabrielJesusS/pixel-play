@@ -1,0 +1,44 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type TIconButtonThemes = "primary" | "accent";
+
+type TIconButtonAppearance = "solid" | "outlined";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  theme?: TIconButtonThemes;
+  appearance?: TIconButtonAppearance;
+};
+
+const {
+  as: Tag = "button",
+  theme = "primary",
+  appearance = "solid",
+  iconPosition = "right",
+  full = false,
+  ...props
+} = Astro.props;
+
+const BUTTON_THEMES: Record<TIconButtonThemes, string> = {
+  primary: "icon-button-primary",
+  accent: "icon-button-accent",
+};
+
+const BUTTON_APPEARANCE: Record<TIconButtonAppearance, string> = {
+  outlined: "icon-button-outline",
+  solid: "",
+};
+---
+
+<Tag
+  class:list={[
+    "icon-button-base",
+    BUTTON_THEMES[theme as TIconButtonThemes],
+    BUTTON_APPEARANCE[appearance as TIconButtonAppearance],
+  ]}
+  {...props}
+>
+  <span>
+    <slot />
+  </span>
+</Tag>
