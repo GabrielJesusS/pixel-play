@@ -1,0 +1,19 @@
+.theme-icon {
+  transition: transform 200ms,
+    opacity 120ms cubic-bezier(0.87, -0.41, 0.19, 1.44);
+  transform: translateX(0%);
+}
+
+.theme-icon-moon {
+  position: absolute;
+}
+
+html[data-theme="light"] .theme-icon-moon {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+html[data-theme="dark"] .theme-icon-sun {
+  transform: translateX(-100%);
+  opacity: 0;
+}

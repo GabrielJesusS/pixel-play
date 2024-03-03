@@ -1,0 +1,50 @@
+---
+import "../styles/main.css";
+
+type Props = {
+  title: string;
+}
+
+const { title } = Astro.props
+
+---
+
+<!doctype html>
+<html lang="pt-br" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ?? "Sample title"}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<script is:inline>
+  function setTheme(theme) {
+    localStorage.setItem("prefered-theme", theme);
+  }
+
+  function getTheme() {
+    return localStorage.getItem("prefered-theme") ?? "";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+
+  const isDarkDefault = matchMedia("(prefers-color-scheme: dark)").matches;
+
+  if (!getTheme()) {
+    setTheme("light");
+    if (isDarkDefault) {
+      setTheme("dark");
+    }
+  }
+
+  applyTheme(getTheme());
+</script>

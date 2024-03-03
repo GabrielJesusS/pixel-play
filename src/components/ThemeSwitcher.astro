@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="theme-switcher"
+  class="p-2 bg-basis-foreground text-basis hover:text-primary-content hover:bg-primary border border-basis-boundary active:bg-primary-active rounded-lg block"
+>
+  <Icon name="radix-icons:moon" class={"theme-icon theme-icon-moon"} />
+  <Icon name="radix-icons:sun" class={"theme-icon theme-icon-sun"} />
+</button>
+
+<script is:inline>
+  function setTheme(theme) {
+    localStorage.setItem("prefered-theme", theme);
+  }
+
+  function getTheme() {
+    return localStorage.getItem("prefered-theme") ?? "";
+  }
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+  }
+
+  const themeSwitcher = document.querySelector("#theme-switcher");
+
+  themeSwitcher.addEventListener("click", () => {
+    const theme = getTheme();
+
+    if (theme === "dark") {
+      setTheme("light");
+    }
+
+    if (theme === "light") {
+      setTheme("dark");
+    }
+
+    applyTheme(getTheme());
+  });
+</script>

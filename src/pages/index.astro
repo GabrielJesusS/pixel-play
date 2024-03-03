@@ -1,0 +1,18 @@
+---
+import RootLayout from "../layouts/RootLayout.astro";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro"
+---
+
+<RootLayout title="Sample props">
+  <main
+    class="min-h-screen flex items-center justify-center flex-col bg-basis-foreground text-basis"
+  >
+    <div class="space-y-2 flex flex-col items-center">
+      <h1 class="text-3xl font-black text-primary">Astro setup boilerplate!</h1>
+      <small class="inline-block"
+        >Be happy man, less JS then you have of lifespan!</small
+      >
+      <ThemeSwitcher/>
+    </div>
+  </main>
+</RootLayout>
