@@ -1,0 +1,63 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types";
+
+type TButtonThemes = "primary" | "accent";
+
+type TButtonAppearance = "solid" | "outlined";
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  theme?: TButtonThemes;
+  appearance?: TButtonAppearance;
+  full?: boolean;
+  iconPosition?: "left" | "right";
+};
+
+const {
+  as: Tag = "a",
+  theme = "primary",
+  appearance = "solid",
+  iconPosition = "right",
+  full = false,
+  ...props
+} = Astro.props;
+
+const BUTTON_THEMES: Record<TButtonThemes, string> = {
+  primary: "button-primary",
+  accent: "button-accent",
+};
+
+const BUTTON_APPEARANCE: Record<TButtonAppearance, string> = {
+  outlined: "button-outline",
+  solid: "",
+};
+
+function isButtonLeft(position: string) {
+  return position === "left";
+}
+
+function hasIcon() {
+  return Astro.slots.has("icon");
+}
+---
+
+<Tag
+  class:list={[
+    "button-base",
+    { "button-block": full },
+    { "button-icon-left": isButtonLeft(iconPosition) },
+    BUTTON_THEMES[theme as TButtonThemes],
+    BUTTON_APPEARANCE[appearance as TButtonAppearance],
+  ]}
+  {...props}
+>
+  <span>
+    <slot />
+  </span>
+  {
+    hasIcon() ? (
+      <span>
+        <slot name="icon" />
+      </span>
+    ) : null
+  }
+</Tag>

@@ -1,0 +1,7 @@
+.paralelogram {
+  transform: skewX(-20deg);
+}
+
+.paralelogram > * {
+  transform: skewX(20deg);
+}

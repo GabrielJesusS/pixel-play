@@ -1,0 +1,31 @@
+.button-base {
+  @apply px-3 font-medium space-x-2 py-1 items-center paralelogram flex transition-all duration-100 ease-in-out border;
+}
+
+.button-primary {
+  @apply bg-primary hover:bg-primary-focus active:bg-primary-active text-primary-content  border-primary;
+}
+
+.button-accent {
+  @apply bg-accent hover:bg-accent-focus active:bg-accent-active text-accent-content  border-accent;
+}
+
+.button-base.button-outline {
+  @apply bg-transparent;
+}
+
+.button-accent.button-outline {
+  @apply text-accent hover:bg-accent active:bg-accent-active hover:text-accent-content;
+}
+
+.button-primary.button-outline {
+  @apply text-primary hover:bg-primary active:bg-primary-active hover:text-primary-content;
+}
+
+.button-block{
+  @apply w-full
+}
+
+.button-base.button-icon-left{
+  @apply flex-row-reverse space-x-reverse
+}
