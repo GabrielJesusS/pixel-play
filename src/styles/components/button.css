@@ -1,5 +1,5 @@
 .button-base {
-  @apply px-3 font-medium space-x-2 py-1 items-center paralelogram flex transition-all duration-100 ease-in-out border;
+  @apply px-3 font-medium space-x-2 py-1 items-center justify-center paralelogram flex transition-all duration-100 ease-in-out border;
 }
 
 .button-primary {
