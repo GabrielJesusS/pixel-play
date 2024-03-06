@@ -1,0 +1,28 @@
+---
+import { PlatformEnum } from "../enum/PlatformEnum";
+import { Icon } from "astro-icon/components";
+
+type Props = {
+  platform: PlatformEnum;
+};
+
+const PLATFORM_ICONS = {
+  [PlatformEnum.XBOX]: "logos/xbox-icon",
+  [PlatformEnum.NINTENDO]: "logos/switch-icon",
+  [PlatformEnum.STEAM]: "logos/steam-icon",
+  [PlatformEnum.PLAYSTATION]: "logos/playstation-icon",
+};
+
+const PLATFORM_LABELS = {
+  [PlatformEnum.XBOX]: "Xbox Series S | X",
+  [PlatformEnum.NINTENDO]: "Nintendo Switch",
+  [PlatformEnum.STEAM]: "Steam / PC",
+  [PlatformEnum.PLAYSTATION]: "Playstation 5",
+}
+
+const { platform } = Astro.props;
+---
+
+<span title={PLATFORM_LABELS[platform]} class="text-xl p-0.5 bg-accent block size-fit rounded-full text-accent-content">
+  <Icon name={PLATFORM_ICONS[platform]} />
+</span>
