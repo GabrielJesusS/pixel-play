@@ -1,5 +1,6 @@
 ---
 import type { PlatformEnum } from "../enum/PlatformEnum";
+import Button from "./common/Button.astro";
 import SectionHeading from "./common/SectionHeading.astro";
 import HighlightItem from "./HighlightItem.astro";
 
@@ -13,11 +14,12 @@ interface IItemsProps {
 }
 
 type Props = {
+  to: string
   title: string;
   items?: IItemsProps[];
 };
 
-const { title, items = [] } = Astro.props;
+const { title, items = [] , to } = Astro.props;
 ---
 
 <div
@@ -33,4 +35,7 @@ const { title, items = [] } = Astro.props;
       ))
     }
   </ul>
+  <Button as="a" href={to} full appearance="outlined">
+    Ver todos
+  </Button>
 </div>
