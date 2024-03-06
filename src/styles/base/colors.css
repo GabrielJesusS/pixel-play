@@ -37,7 +37,7 @@
 
 html[data-theme="dark"] {
   --color-background: 10 12 13;
-  --color-foreground: 12 14 15;
+  --color-foreground: 13 16 17;
   --color-boundary: 25 32 35;
   --color-text: 241 241 241;
 }
