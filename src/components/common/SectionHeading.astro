@@ -1,17 +1,43 @@
 ---
 import { Icon } from "astro-icon/components";
+
+type Props = {
+  level?: "h1" | "h2" | "h3";
+  type?: "h1" | "h2" | "h3";
+};
+
+const { level = "h2", type = "h2" } = Astro.props;
+
+const Tag = level;
+
+const LEVEL_STYLE_MAP = {
+  h1: "text-5xl",
+  h2: "text-3xl",
+  h3: "text-xl",
+};
+
+const DECORATOR_STYLE_MAP = {
+  h1: "text-5xl",
+  h2: "text-4xl",
+  h3: "text-3xl",
+};
 ---
 
-<h2 class="text-3xl uppercase text-basis flex space-x-1 group font-semibold">
+<Tag
+  class:list={[
+    "text-3xl uppercase text-basis flex space-x-1 group font-semibold",
+    LEVEL_STYLE_MAP[type],
+  ]}
+>
   <Icon
-    class="text-primary text-4xl"
+    class:list={["text-primary", DECORATOR_STYLE_MAP[type]]}
     name="heroicons:chevron-double-right-16-solid"
   />
   <span>
     <slot />
   </span>
   <Icon
-    class="text-primary text-4xl"
+    class:list={["text-primary", DECORATOR_STYLE_MAP[type]]}
     name="heroicons:chevron-double-left-16-solid"
   />
-</h2>
+</Tag>
