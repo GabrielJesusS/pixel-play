@@ -5,3 +5,7 @@
 .paralelogram > * {
   transform: skewX(20deg);
 }
+
+.paralelogram-after::after{
+  transform: skewX(-20deg);
+}
