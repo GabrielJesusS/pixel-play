@@ -1,0 +1,47 @@
+.mosaic-item {
+  @apply rounded-2xl overflow-hidden size-full;
+}
+
+.mosaic-image {
+  @apply group-hover:scale-150 transition-all duration-150 size-full object-cover object-center;
+}
+
+.mosaic-item:hover .mosaic-image {
+  animation: move-cover 20s linear infinite;
+}
+
+.mosaic-item-content {
+  transition: transform 150ms ease-in-out;
+  @apply size-full group-hover:translate-y-0 translate-y-full space-y-2 absolute from-basis-foreground via-basis-foreground/75 to-transparent bg-gradient-to-t inset-0 text-basis flex flex-col justify-end p-4;
+}
+
+.mosaic-item-effect {
+  transition: transform 150ms 150ms, opacity 175ms 150ms ease-in-out;
+  @apply translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0;
+}
+
+.mosaic-item-title {
+  @apply font-semibold hover:text-primary;
+}
+
+.mosaic-item-description {
+  @apply line-clamp-2 text-basis/70;
+}
+
+@keyframes move-cover {
+  0% {
+    object-position: center;
+  }
+  25% {
+    object-position: right;
+  }
+  50% {
+    object-position: center;
+  }
+  75%{
+    object-position: left;
+  }
+  100%{
+    object-position: center;
+  }
+}

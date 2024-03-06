@@ -1,0 +1,27 @@
+---
+import MosaicItem from "./MosaicItem.astro";
+
+interface IMosaicItem {
+  url: string;
+  cover: string;
+  badge: string;
+  title: string;
+  description: string;
+}
+
+type Props = {
+  items: IMosaicItem[];
+};
+
+const { items = [] } = Astro.props;
+---
+
+<ul class="mosaic">
+  {
+    items.map((item) => (
+      <li class="mosaic-item">
+        <MosaicItem {...item} />
+      </li>
+    ))
+  }
+</ul>

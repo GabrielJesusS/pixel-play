@@ -1,0 +1,28 @@
+---
+import Badge from "./common/Badge.astro";
+
+type Props = {
+  url: string;
+  cover: string;
+  badge: string;
+  title: string;
+  description: string;
+};
+
+const { badge, cover, description, title, url } = Astro.props;
+---
+
+<a href={url} class="group">
+  <div class="size-full overflow-hidden relative">
+    <img src={cover} class="mosaic-image" alt={title} />
+    <div class="mosaic-item-content">
+      <p class="mosaic-item-title mosaic-item-effect">{title}</p>
+      <span class="mosaic-item-effect">
+        <Badge>{badge}</Badge>
+      </span>
+      <small class="mosaic-item-description mosaic-item-effect"
+        >{description}</small
+      >
+    </div>
+  </div>
+</a>

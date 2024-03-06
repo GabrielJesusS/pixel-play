@@ -1,0 +1,13 @@
+.mosaic {
+  @apply grid grid-cols-4 gap-4;
+}
+
+.mosaic .mosaic-item {
+  @apply col-span-1 aspect-square;
+}
+
+.mosaic .mosaic-item:nth-child(2),
+.mosaic .mosaic-item:nth-child(6n),
+.mosaic .mosaic-item:nth-child(6n + 2) {
+  @apply col-span-2 aspect-[2/1];
+}
