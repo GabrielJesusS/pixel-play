@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<h2 class="text-3xl uppercase text-basis flex space-x-1 group font-semibold">
+  <Icon
+    class="text-primary text-4xl"
+    name="heroicons:chevron-double-right-16-solid"
+  />
+  <span>
+    <slot />
+  </span>
+  <Icon
+    class="text-primary text-4xl"
+    name="heroicons:chevron-double-left-16-solid"
+  />
+</h2>
