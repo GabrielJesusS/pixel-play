@@ -1,0 +1,36 @@
+---
+import type { PlatformEnum } from "../enum/PlatformEnum";
+import SectionHeading from "./common/SectionHeading.astro";
+import HighlightItem from "./HighlightItem.astro";
+
+interface IItemsProps {
+  name: string;
+  genre: string;
+  price: number;
+  platforms: PlatformEnum[];
+  image: string;
+  url: string;
+}
+
+type Props = {
+  title: string;
+  items?: IItemsProps[];
+};
+
+const { title, items = [] } = Astro.props;
+---
+
+<div
+  class="bg-basis-foreground border-basis-boundary rounded-2xl p-4 flex flex-col items-center border drop-shadow-md"
+>
+  <SectionHeading level="h3" type="h3">{title}</SectionHeading>
+  <ul class="w-full py-6 space-y-6">
+    {
+      items.map((item) => (
+        <li>
+          <HighlightItem {...item} />
+        </li>
+      ))
+    }
+  </ul>
+</div>

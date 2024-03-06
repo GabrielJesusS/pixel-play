@@ -18,6 +18,9 @@ export default {
       fontFamily: {
         sans: ["Lato", ...defaultTheme.fontFamily.sans],
       },
+      aspectRatio: {
+        "game-cover" : "1.7/2.5"
+      },
       colors: {
         primary: {
           DEFAULT: "rgb(var(--color-primary) / <alpha-value>)",

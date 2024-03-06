@@ -1,0 +1,54 @@
+---
+import { PlatformEnum } from "../enum/PlatformEnum";
+import PlatformItem from "../components/PlatformItem.astro";
+
+type Props = {
+  url: string;
+  name: string;
+  genre: string;
+  price: number;
+  image: string;
+  platforms?: PlatformEnum[];
+};
+
+const { genre, name, platforms = [], price, image, url } = Astro.props;
+---
+
+<a href={url} class="group">
+  <div class="flex text-basis space-x-2 items-center">
+    <div class="w-20 aspect-game-cover rounded-md overflow-hidden">
+      <img
+        class="h-full object-cover group-hover:scale-125 transition-transform duration-75 ease-in-out"
+        src={image}
+        alt={name}
+      />
+    </div>
+    <div class="grow flex-1 p-2 space-y-2">
+      <div class="space-y-2 grow">
+        <p
+          title={name}
+          class="font-medium line-clamp-2 transition-colors duration-100 ease-in-out text-basis group-hover:text-primary"
+        >
+          {name}
+        </p>
+        <small
+          class="bg-primary paralelogram flex w-fit px-2 uppercase text-primary-content"
+        >
+          <span class="break-all line-clamp-1"
+            >{genre}
+          </span>
+        </small>
+        <p>R$ {price}</p>
+      </div>
+      <ul class="shrink flex space-x-2 flex-wrap">
+        {
+          platforms.map((platform) => (
+            <li>
+              <PlatformItem platform={platform} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</a>
