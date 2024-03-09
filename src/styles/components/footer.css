@@ -1,0 +1,10 @@
+.footer {
+}
+
+.footer .topic-title {
+  @apply text-2xl font-bold uppercase underline decoration-basis underline-offset-8;
+}
+
+.footer .topic-item {
+    @apply hover:text-primary transition-all duration-150 ease-out
+}
