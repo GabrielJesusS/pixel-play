@@ -7,7 +7,9 @@
 }
 
 .banner-carousel.swiper .carousel-overview-content {
-  @apply transition-all duration-1000 ease-in-out opacity-0;
+  transition: transform 1s, opacity 1s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  @apply ease-in-out opacity-0;
 }
 
 .banner-carousel.swiper .swiper-slide-active .carousel-overview-content {
