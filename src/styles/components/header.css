@@ -1,5 +1,5 @@
 .header {
-  @apply bg-basis-foreground w-full sticky top-0 left-0 z-10 drop-shadow-md;
+  @apply bg-basis-foreground w-full sticky h-fit top-0 left-0 z-10 drop-shadow-md;
 }
 
 .header.animated {
