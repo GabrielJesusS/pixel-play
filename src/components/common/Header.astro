@@ -1,5 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
+import ThemeSwitcher from "../ThemeSwitcher.astro";
 
 interface Props {
   animated?: boolean;
@@ -13,39 +14,88 @@ const { animated } = Astro.props;
     <a href="#" class="text-5xl text-basis">
       <Icon name="logos/pixel-play-logo" />
     </a>
-    <div class="flex items-center uppercase font-semibold space-x-4">
+    <button id="toggle-mobile-header" class="text-basis text-2xl lg:hidden">
+      <Icon name="heroicons:bars-3-16-solid" class="open-button" />
+      <Icon name="heroicons:x-mark-16-solid" class="close-button" />
+    </button>
+    <div class="hidden lg:flex items-center uppercase font-semibold space-x-4">
       <ul class="flex space-x-4">
         <li>
-          <a class="header-nav-item" href="">Inicio</a>
+          <a class="header-nav-item" href="#">Inicio</a>
         </li>
         <li>
-          <a class="header-nav-item" href="">Melhores Jogos</a>
+          <a class="header-nav-item" href="#">Melhores Jogos</a>
         </li>
         <li>
-          <a class="header-nav-item" href="">Loja</a>
+          <a class="header-nav-item" href="#">Loja</a>
         </li>
         <li>
-          <a class="header-nav-item" href="">Blog</a>
+          <a class="header-nav-item" href="#">Blog</a>
         </li>
         <li>
-          <a class="header-nav-item" href="">Contato</a>
+          <a class="header-nav-item" href="#">Contato</a>
         </li>
       </ul>
       <span class="flex items-center">
-        <a href="" class="header-action-item"
+        <a href="#" class="header-action-item"
           ><span class="block">Entrar</span></a
         >
         <small
           class="paralelogram text-base block px-2 py-1 bg-basis text-basis-background"
           ><span class="block">Ou</span></small
         >
-        <a href="" class="header-action-item"
+        <a href="#" class="header-action-item"
           ><span class="block">Registrar</span></a
         >
       </span>
+   
     </div>
   </nav>
+  <nav
+    id="mobile-navbar"
+    class="fixed -translate-y-full opacity-0 transition-all duration-150 lg:hidden flex flex-col inset-0 h-screen items-center justify-center uppercase font-semibold space-y-4 bg-basis-foreground"
+  >
+    <ul class="flex flex-col items-center space-y-4">
+      <li>
+        <a class="header-nav-item" href="#">Inicio</a>
+      </li>
+      <li>
+        <a class="header-nav-item" href="#">Melhores Jogos</a>
+      </li>
+      <li>
+        <a class="header-nav-item" href="#">Loja</a>
+      </li>
+      <li>
+        <a class="header-nav-item" href="#">Blog</a>
+      </li>
+      <li>
+        <a class="header-nav-item" href="#">Contato</a>
+      </li>
+    </ul>
+    <span class="flex items-center">
+      <a href="#" class="header-action-item"
+        ><span class="block">Entrar</span></a
+      >
+      <small
+        class="paralelogram text-base block px-2 py-1 bg-basis text-basis-background"
+        ><span class="block">Ou</span></small
+      >
+      <a href="#" class="header-action-item"
+        ><span class="block">Registrar</span></a
+      >
+    </span>
+  </nav>
 </header>
+
+<script is:inline>
+  const button = document.querySelector("#toggle-mobile-header");
+  const mobileNav = document.querySelector("#mobile-navbar");
+
+  button.addEventListener("click", (evt) => {
+    mobileNav.classList.toggle("show-menu-nav");
+    button.toggleAttribute("data-menu-opened");
+  });
+</script>
 
 {
   animated ? (

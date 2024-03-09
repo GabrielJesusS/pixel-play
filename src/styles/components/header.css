@@ -14,6 +14,24 @@
   @apply relative text-basis after:inset-0 after:-z-[1] z-0 paralelogram-after after:bg-primary hover:text-primary-content after:size-full after:max-w-0 hover:after:max-w-full after:transition-all after:duration-150 after:absolute p-2;
 }
 
+.header .show-menu-nav {
+  @apply translate-y-0 opacity-100;
+}
+
+.header #toggle-mobile-header[data-menu-opened] {
+  @apply z-50;
+}
+
+.header #toggle-mobile-header[data-menu-opened] .open-button,
+.header #toggle-mobile-header .close-button {
+  @apply hidden;
+}
+
+.header #toggle-mobile-header .open-button,
+.header #toggle-mobile-header[data-menu-opened] .close-button {
+  @apply block;
+}
+
 .header .header-action-item {
   @apply px-2 py-1 bg-primary block paralelogram text-primary-content hover:text-accent-content hover:bg-accent transition-all duration-150 ease-in-out;
 }
