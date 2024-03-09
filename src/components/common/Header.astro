@@ -48,7 +48,6 @@ const { animated } = Astro.props;
           ><span class="block">Registrar</span></a
         >
       </span>
-   
     </div>
   </nav>
   <nav
@@ -87,24 +86,22 @@ const { animated } = Astro.props;
   </nav>
 </header>
 
-<script is:inline>
+<script>
   const button = document.querySelector("#toggle-mobile-header");
   const mobileNav = document.querySelector("#mobile-navbar");
 
-  button.addEventListener("click", (evt) => {
-    mobileNav.classList.toggle("show-menu-nav");
-    button.toggleAttribute("data-menu-opened");
-  });
+  if (button && mobileNav) {
+    button.addEventListener("click", (evt) => {
+      mobileNav.classList.toggle("show-menu-nav");
+      button.toggleAttribute("data-menu-opened");
+    });
+  }
 </script>
 
-{
-  animated ? (
-    <script is:inline>
-      document.addEventListener("scroll", (e)=>
-      {document
-        .querySelector("#header")
-        ?.classList.toggle("animate-header", window.scrollY > 0)}
-      )
-    </script>
-  ) : null
-}
+<script>
+  document.addEventListener("scroll", (e) => {
+    document
+      .querySelector("#header")
+      ?.classList.toggle("animate-header", window.scrollY > 0);
+  });
+</script>
