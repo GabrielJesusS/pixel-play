@@ -4,9 +4,10 @@ import { Icon } from "astro-icon/components";
 type Props = {
   level?: "h1" | "h2" | "h3";
   type?: "h1" | "h2" | "h3";
+  center?: boolean;
 };
 
-const { level = "h2", type = "h2" } = Astro.props;
+const { level = "h2", type = "h2", center = false } = Astro.props;
 
 const Tag = level;
 
@@ -26,6 +27,7 @@ const DECORATOR_STYLE_MAP = {
 <Tag
   class:list={[
     "text-3xl uppercase text-basis flex space-x-1 group font-semibold",
+    { "text-center": center },
     LEVEL_STYLE_MAP[type],
   ]}
 >
