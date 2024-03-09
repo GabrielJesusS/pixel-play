@@ -11,7 +11,7 @@ export default {
         "2xl": "1.5rem",
       },
       screens: {
-        "2xl": "73.75rem",
+        "2xl": "80rem",
       },
     },
     extend: {
@@ -19,7 +19,10 @@ export default {
         sans: ["Lato", ...defaultTheme.fontFamily.sans],
       },
       aspectRatio: {
-        "game-cover" : "1.7/2.5"
+        "game-cover": "1.7/2.5",
+      },
+      maxWidth: {
+        container: "80rem",
       },
       colors: {
         primary: {
