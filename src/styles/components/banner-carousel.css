@@ -1,0 +1,38 @@
+.banner-carousel.swiper {
+  @apply h-full relative;
+}
+
+.banner-carousel .swiper-button-navigation {
+  @apply absolute right-6 bottom-6 z-10 hidden space-x-4 xl:flex;
+}
+
+.banner-carousel.swiper .carousel-overview-content {
+  @apply transition-all duration-1000 ease-in-out opacity-0;
+}
+
+.banner-carousel.swiper .swiper-slide-active .carousel-overview-content {
+  @apply translate-x-0 opacity-100 delay-500;
+}
+
+.banner-carousel.swiper .banner-carousel-cover {
+  object-position: left;
+  animation: move-banner-cover 20s infinite ease-in-out alternate-reverse;
+}
+
+.banner-carousel .swiper-pagination-bullet-active{
+    @apply bg-primary
+}
+
+.banner-carousel .swiper-button-navigation .swiper-button-prev,
+.banner-carousel .swiper-button-navigation .swiper-button-next {
+  @apply size-8 bg-primary rounded-full cursor-pointer text-primary-content text-2xl flex items-center justify-center hover:bg-primary-focus active:bg-primary-active transition-all duration-75 ease-in-out;
+}
+
+@keyframes move-banner-cover {
+  0% {
+    object-position: left;
+  }
+  100% {
+    object-position: right;
+  }
+}

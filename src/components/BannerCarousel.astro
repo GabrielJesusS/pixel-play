@@ -1,0 +1,62 @@
+---
+import { Icon } from "astro-icon/components";
+import BannerCarouselItem, {
+  type IBannerCarouselItemProps,
+} from "./BannerCarouselItem.astro";
+
+type Props = {
+  items?: IBannerCarouselItemProps[];
+};
+
+const { items = [] } = Astro.props;
+---
+
+<div class="banner-carousel swiper">
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+    {items.map((slide) => <BannerCarouselItem {...slide} />)}
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-navigation">
+    <div class="swiper-button-prev group">
+      <Icon
+        class="block group-hover:scale-150 duration-75 ease-out transition-all"
+        name="heroicons:chevron-left-16-solid"
+      />
+    </div>
+    <div class="swiper-button-next group">
+      <Icon
+        class="block group-hover:scale-150 duration-75 ease-out transition-all"
+        name="heroicons:chevron-right-16-solid"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import "swiper/css/effect-fade";
+  import { Swiper } from "swiper";
+  import { Pagination, Navigation, Autoplay, EffectFade } from "swiper/modules";
+
+  const swiper = new Swiper(".swiper", {
+    autoplay: {
+      delay: 15000,
+      disableOnInteraction: false,
+    },
+    effect: "fade",
+    pagination: {
+      el: ".swiper-pagination",
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    modules: [Pagination, Navigation, Autoplay, EffectFade],
+  });
+</script>
