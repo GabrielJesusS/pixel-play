@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  animated?: boolean;
+}
+
+const { animated } = Astro.props;
+---
+
+<header class:list={["header", { animated }]} id="header">
+  <nav class="container px-6 py-4 flex justify-between items-center">
+    <a href="#" class="text-5xl text-basis">
+      <Icon name="logos/pixel-play-logo" />
+    </a>
+    <div class="flex items-center uppercase font-semibold space-x-4">
+      <ul class="flex space-x-4">
+        <li>
+          <a class="header-nav-item" href="">Inicio</a>
+        </li>
+        <li>
+          <a class="header-nav-item" href="">Melhores Jogos</a>
+        </li>
+        <li>
+          <a class="header-nav-item" href="">Loja</a>
+        </li>
+        <li>
+          <a class="header-nav-item" href="">Blog</a>
+        </li>
+        <li>
+          <a class="header-nav-item" href="">Contato</a>
+        </li>
+      </ul>
+      <span class="flex items-center">
+        <a href="" class="header-action-item"
+          ><span class="block">Entrar</span></a
+        >
+        <small
+          class="paralelogram text-base block px-2 py-1 bg-basis text-basis-background"
+          ><span class="block">Ou</span></small
+        >
+        <a href="" class="header-action-item"
+          ><span class="block">Registrar</span></a
+        >
+      </span>
+    </div>
+  </nav>
+</header>
+
+{
+  animated ? (
+    <script is:inline>
+      document.addEventListener("scroll", (e)=>
+      {document
+        .querySelector("#header")
+        ?.classList.toggle("animate-header", window.scrollY > 0)}
+      )
+    </script>
+  ) : null
+}

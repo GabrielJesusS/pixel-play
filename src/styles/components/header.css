@@ -1,0 +1,19 @@
+.header {
+  @apply bg-basis-foreground w-full sticky top-0 left-0 z-10 drop-shadow-md;
+}
+
+.header.animated {
+  @apply fixed from-basis-foreground bg-gradient-to-b bg-transparent transition-all duration-150 ease-out pb-10;
+}
+
+.header.animated.animate-header {
+  @apply bg-basis-foreground pb-0;
+}
+
+.header .header-nav-item {
+  @apply relative text-basis after:inset-0 after:-z-[1] z-0 paralelogram-after after:bg-primary hover:text-primary-content after:size-full after:max-w-0 hover:after:max-w-full after:transition-all after:duration-150 after:absolute p-2;
+}
+
+.header .header-action-item {
+  @apply px-2 py-1 bg-primary block paralelogram text-primary-content hover:text-accent-content hover:bg-accent transition-all duration-150 ease-in-out;
+}
