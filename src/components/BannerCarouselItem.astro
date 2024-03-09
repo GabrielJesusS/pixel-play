@@ -7,7 +7,7 @@ export interface IBannerCarouselItemProps {
   overline: string;
   title: string;
   description: string;
-  plaftorms: PlatformEnum[];
+  platforms: PlatformEnum[];
   cartUrl: string;
   url: string;
   cover: string;
@@ -15,7 +15,7 @@ export interface IBannerCarouselItemProps {
 
 type Props = IBannerCarouselItemProps;
 
-const { cartUrl, cover, description, overline, plaftorms, title, url } =
+const { cartUrl, cover, description, overline, platforms, title, url } =
   Astro.props;
 ---
 
@@ -30,7 +30,7 @@ const { cartUrl, cover, description, overline, plaftorms, title, url } =
         <p class="text-xl uppercase font-bold line-clamp-2">
           {overline}
         </p>
-        <p class="text-4xl uppercase font-bold line-clamp-2">
+        <p class="text-4xl uppercase font-bold line-clamp-3">
           {title}
         </p>
         <p class="line-clamp-3">
@@ -45,7 +45,7 @@ const { cartUrl, cover, description, overline, plaftorms, title, url } =
         <small class="text-sm">Disponível em:</small>
         <ul class="space-x-2 flex">
           {
-            plaftorms.map((platform) => (
+            platforms.map((platform) => (
               <li>
                 <PlatformItem platform={platform} />
               </li>

@@ -2,6 +2,10 @@
   @apply h-full relative;
 }
 
+.banner-carousel.swiper .swiper-slide{
+  @apply h-screen
+}
+
 .banner-carousel .swiper-button-navigation {
   @apply absolute right-6 bottom-6 z-10 hidden space-x-4 xl:flex;
 }
