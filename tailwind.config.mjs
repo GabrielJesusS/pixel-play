@@ -11,7 +11,7 @@ export default {
         "2xl": "1.5rem",
       },
       screens: {
-        "2xl": "70.5rem",
+        "2xl": "73.75rem",
       },
     },
     extend: {
