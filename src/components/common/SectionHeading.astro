@@ -27,19 +27,21 @@ const DECORATOR_STYLE_MAP = {
 <Tag
   class:list={[
     "text-3xl uppercase text-basis flex space-x-1 group font-semibold",
-    { "text-center": center },
+    center
+      ? "text-center justify-center"
+      : "text-center justify-center md:justify-start md:text-start",
     LEVEL_STYLE_MAP[type],
   ]}
 >
   <Icon
-    class:list={["text-primary", DECORATOR_STYLE_MAP[type]]}
+    class:list={["text-primary shrink-0", DECORATOR_STYLE_MAP[type]]}
     name="heroicons:chevron-double-right-16-solid"
   />
   <span>
     <slot />
   </span>
   <Icon
-    class:list={["text-primary", DECORATOR_STYLE_MAP[type]]}
+    class:list={["text-primary shrink-0", DECORATOR_STYLE_MAP[type]]}
     name="heroicons:chevron-double-left-16-solid"
   />
 </Tag>
