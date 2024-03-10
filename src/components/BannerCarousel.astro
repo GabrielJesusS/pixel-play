@@ -6,29 +6,30 @@ import BannerCarouselItem, {
 
 type Props = {
   items?: IBannerCarouselItemProps[];
+  id: string;
 };
 
-const { items = [] } = Astro.props;
+const { items = [], id } = Astro.props;
 ---
 
-<div class="banner-carousel swiper" data-banner-not-initialized>
+<div class="banner-carousel swiper" data-banner-not-initialized id={id}>
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
     {items.map((slide) => <BannerCarouselItem {...slide} />)}
   </div>
   <!-- If we need pagination -->
-  <div class="swiper-pagination"></div>
+  <div class=`swiper-pagination pagination-${id}`></div>
 
   <!-- If we need navigation buttons -->
   <div class="swiper-button-navigation">
-    <div class="swiper-button-prev group">
+    <div class=`swiper-button-prev prev-${id} group`>
       <Icon
         class="block group-hover:scale-150 duration-75 ease-out transition-all"
         name="heroicons:chevron-left-16-solid"
       />
     </div>
-    <div class="swiper-button-next group">
+    <div class=`swiper-button-next next-${id} group`>
       <Icon
         class="block group-hover:scale-150 duration-75 ease-out transition-all"
         name="heroicons:chevron-right-16-solid"
@@ -44,27 +45,30 @@ const { items = [] } = Astro.props;
   import { Swiper } from "swiper";
   import { Pagination, Navigation, Autoplay, EffectFade } from "swiper/modules";
 
-  const swiper = new Swiper(".swiper", {
-    autoplay: {
-      delay: 15000,
-      disableOnInteraction: false,
-    },
-    effect: "fade",
-    pagination: {
-      el: ".swiper-pagination",
-    },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-    modules: [Pagination, Navigation, Autoplay, EffectFade],
-  });
+  const bannerCarouselCollection =
+    document.querySelectorAll(".banner-carousel");
 
-  swiper.on("beforeSlideChangeStart", () => {
-    const carousel = document.querySelector(".banner-carousel");
+  bannerCarouselCollection.forEach((carousel) => {
+    const id = carousel.id;
 
-    if (carousel?.attributes.getNamedItem("data-banner-not-initialized")) {
+    new Swiper(`#${id}`, {
+      autoplay: {
+        delay: 15000,
+        disableOnInteraction: false,
+      },
+      effect: "fade",
+      pagination: {
+        el: `.pagination-${id}`,
+      },
+      navigation: {
+        nextEl: `.next-${id}`,
+        prevEl: `.prev-${id}`,
+      },
+      modules: [Pagination, Navigation, Autoplay, EffectFade],
+    });
+
+    setTimeout(() => {
       carousel.toggleAttribute("data-banner-not-initialized");
-    }
+    }, 500);
   });
 </script>
