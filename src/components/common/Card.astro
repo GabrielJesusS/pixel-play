@@ -1,4 +1,6 @@
 ---
+import type { PlatformEnum } from "../../enum/PlatformEnum";
+import PlatformItem from "../PlatformItem.astro";
 import Button from "./Button.astro";
 
 type Props = {
@@ -8,12 +10,22 @@ type Props = {
   price: number;
   genre: string;
   discountPrice?: number;
+  platforms?: PlatformEnum[];
   discount?: number;
   isPreorder?: boolean;
 };
 
-const { genre, image, price, title, discount, id, discountPrice, isPreorder } =
-  Astro.props;
+const {
+  genre,
+  image,
+  price,
+  title,
+  discount,
+  id,
+  discountPrice,
+  isPreorder,
+  platforms = [],
+} = Astro.props;
 
 const hasDiscount = !!discount;
 
@@ -44,8 +56,19 @@ function formatDiscount(value: number): string {
     {
       isPreorder ? (
         <small class="bg-primary after:-z-10 z-0 absolute top-0 right-0 overflow-visible after:size-full paralelogram-after after:absolute after:top-0 after:-left-2 after:bg-primary px-4 py-2 uppercase text-primary-content text-sm font-bold flex w-fit">
-         Pre Order
+          Pre Order
         </small>
+      ) : null
+    }
+    {
+      platforms.length ? (
+        <ul class="flex items-center space-x-4 bottom-0 left-0 p-2 absolute bg-gradient-to-t from-basis-background w-full">
+          {platforms.map((platform) => (
+            <li>
+              <PlatformItem platform={platform} />
+            </li>
+          ))}
+        </ul>
       ) : null
     }
   </div>
