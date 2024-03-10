@@ -11,10 +11,10 @@ const { animated } = Astro.props;
 
 <header class:list={["header", { animated }]} id="header">
   <nav class="container px-6 py-4 flex justify-between items-center">
-    <a href="#" class="text-3xl md:text-5xl text-basis">
+    <a href="#" title="Retornar para o inicio" class="text-3xl md:text-5xl text-basis">
       <Icon name="logos/pixel-play-logo" />
     </a>
-    <button id="toggle-mobile-header" class="text-basis text-2xl lg:hidden">
+    <button title="Mostrar menu / Esconder menu" id="toggle-mobile-header" class="text-basis text-2xl lg:hidden">
       <Icon name="heroicons:bars-3-16-solid" class="open-button" />
       <Icon name="heroicons:x-mark-16-solid" class="close-button" />
     </button>
