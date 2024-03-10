@@ -1,0 +1,20 @@
+.card-carousel {
+  @apply relative
+}
+
+.card-carousel .swiper-button-navigation {
+  @apply hidden space-x-4 sm:flex justify-end;
+}
+
+.card-carousel .swiper-pagination {
+  @apply static;
+}
+
+.card-carousel .swiper-pagination-bullet-active {
+  @apply bg-primary;
+}
+
+.card-carousel .swiper-button-prev,
+.card-carousel .swiper-button-next {
+  @apply z-10 size-8 bg-primary rounded-full cursor-pointer text-primary-content text-2xl flex items-center justify-center hover:bg-primary-focus active:bg-primary-active transition-all duration-75 ease-in-out;
+}

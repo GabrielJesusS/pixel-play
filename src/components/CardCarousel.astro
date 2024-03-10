@@ -1,0 +1,81 @@
+---
+import { Icon } from "astro-icon/components";
+import Card from "./common/Card.astro";
+import type { ICard } from "../schemas/cardSchema";
+
+type Props = {
+  items?: ICard[];
+  id: string;
+};
+
+const { items = [], id } = Astro.props;
+---
+
+<div class="card-carousel swiper" id={id}>
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    <!-- Slides -->
+
+    {
+      items.map((card) => (
+        <div class="swiper-slide relative h-auto">
+          <Card {...card} />
+        </div>
+      ))
+    }
+  </div>
+  <!-- If we need pagination -->
+  <div class={`swiper-pagination pagination-${id}`}></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-navigation">
+    <div class={`swiper-button-prev prev-${id} group`}>
+      <Icon
+        class="block group-hover:scale-150 duration-75 ease-out transition-all"
+        name="heroicons:chevron-left-16-solid"
+      />
+    </div>
+    <div class={`swiper-button-next next-${id} group`}>
+      <Icon
+        class="block group-hover:scale-150 duration-75 ease-out transition-all"
+        name="heroicons:chevron-right-16-solid"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  import "swiper/css";
+  import "swiper/css/pagination";
+  import { Swiper } from "swiper";
+  import { Pagination, Navigation } from "swiper/modules";
+
+  const cardCarouselCollection = document.querySelectorAll(".card-carousel");
+
+  function startCarousels(carousels: NodeListOf<Element>): void {
+    carousels.forEach((carousel) => {
+      new Swiper(`#${carousel.id}`, {
+        slidesPerView: 1.2,
+        spaceBetween: 24,
+        breakpoints: {
+          767: {
+            slidesPerView: 2.2,
+          },
+          1023: {
+            slidesPerView: 3.2,
+          },
+        },
+        pagination: {
+          el: `.pagination-${carousel.id}`,
+        },
+        navigation: {
+          nextEl: `.next-${carousel.id}`,
+          prevEl: `.prev-${carousel.id}`,
+        },
+        modules: [Pagination, Navigation],
+      });
+    });
+  }
+
+  startCarousels(cardCarouselCollection);
+</script>
