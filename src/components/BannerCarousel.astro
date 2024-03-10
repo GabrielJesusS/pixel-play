@@ -11,7 +11,7 @@ type Props = {
 const { items = [] } = Astro.props;
 ---
 
-<div class="banner-carousel swiper">
+<div class="banner-carousel swiper" data-banner-not-initialized>
   <!-- Additional required wrapper -->
   <div class="swiper-wrapper">
     <!-- Slides -->
@@ -58,5 +58,13 @@ const { items = [] } = Astro.props;
       prevEl: ".swiper-button-prev",
     },
     modules: [Pagination, Navigation, Autoplay, EffectFade],
+  });
+
+  swiper.on("beforeSlideChangeStart", () => {
+    const carousel = document.querySelector(".banner-carousel");
+
+    if (carousel?.attributes.getNamedItem("data-banner-not-initialized")) {
+      carousel.toggleAttribute("data-banner-not-initialized");
+    }
   });
 </script>

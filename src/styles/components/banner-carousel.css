@@ -1,5 +1,5 @@
 .banner-carousel.swiper {
-  @apply h-full relative;
+  @apply h-screen w-full relative;
 }
 
 .banner-carousel.swiper .swiper-slide{
@@ -10,14 +10,18 @@
   @apply absolute right-6 bottom-6 z-10 hidden space-x-4 xl:flex;
 }
 
+.banner-carousel.swiper[data-banner-not-initialized] .carousel-overview-content {
+  @apply translate-x-0 opacity-100
+}
+
 .banner-carousel.swiper .carousel-overview-content {
-  transition: transform 1s, opacity 1s;
+  transition: transform 0.5s, opacity 0.3s;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   @apply ease-in-out opacity-0;
 }
 
 .banner-carousel.swiper .swiper-slide-active .carousel-overview-content {
-  @apply translate-x-0 opacity-100 delay-500;
+  @apply translate-x-0 opacity-100 delay-150;
 }
 
 .banner-carousel.swiper .banner-carousel-cover {
