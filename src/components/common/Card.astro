@@ -2,6 +2,7 @@
 import type { PlatformEnum } from "../../enum/PlatformEnum";
 import PlatformItem from "../PlatformItem.astro";
 import Button from "./Button.astro";
+import { formatPrice } from "../../utils/formatPrice";
 
 type Props = {
   id: string;
@@ -88,7 +89,7 @@ function formatDiscount(value: number): string {
       <hr class="border-primary border-2" />
       <span class="flex space-x-2 py-1">
         <p class="text-xl font-medium">
-          R$ {hasDiscount ? discountPrice : price}
+          {formatPrice(hasDiscount ? (discountPrice as number) : price)}
         </p>
         {
           hasDiscount ? (
@@ -100,7 +101,7 @@ function formatDiscount(value: number): string {
                 ]}
               />
               <p class:list={[{ "text-basis/75 text-sm": hasDiscount }]}>
-                R$ {price}
+                {formatPrice(price)}
               </p>
             </span>
           ) : null
