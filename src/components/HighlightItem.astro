@@ -21,6 +21,7 @@ const { genre, name, platforms = [], price, image, url } = Astro.props;
         class="h-full object-cover group-hover:scale-125 transition-transform duration-75 ease-in-out"
         src={image}
         alt={name}
+        loading="lazy"
       />
     </div>
     <div class="grow flex-1 p-2 space-y-2">

@@ -14,7 +14,7 @@ const { badge, cover, description, title, url } = Astro.props;
 
 <a href={url} class="group">
   <div class="size-full overflow-hidden relative">
-    <img src={cover} class="mosaic-image" alt={title} />
+    <img src={cover} class="mosaic-image" alt={title} loading="lazy" />
     <div class="mosaic-item-content">
       <p class="mosaic-item-title mosaic-item-effect">{title}</p>
       <span class="mosaic-item-effect">
