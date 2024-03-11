@@ -1,18 +1,59 @@
 ---
-import RootLayout from "../layouts/RootLayout.astro";
-import ThemeSwitcher from "../components/ThemeSwitcher.astro"
+import BannerCarousel from "../components/BannerCarousel.astro";
+import SectionHeading from "../components/common/SectionHeading.astro";
+import SimpleLayout from "../layouts/SimpleLayout.astro";
+import Section from "../components/common/Section.astro";
+import Card from "../components/common/Card.astro";
+import { BANNERS } from "../data/banners";
+import { AWAITED_CARDS, MAIN_CARDS, FREE_CARDS } from "../data/cards";
+import {
+  HIGHLIGHTS_BEST_SELLERS,
+  HIGHLIGHTS_RELEASES,
+  HIGHLIGHTS_COMING_SOON,
+} from "../data/highlights";
+import { MOSAIC_ITEMS } from "../data/mosaic"
+import CardCarousel from "../components/CardCarousel.astro";
+import HighlightColumn from "../components/HighlightColumn.astro";
+import Mosaic from "../components/Mosaic.astro";
 ---
 
-<RootLayout title="Sample props">
-  <main
-    class="min-h-screen flex items-center justify-center flex-col bg-basis-foreground text-basis"
-  >
-    <div class="space-y-2 flex flex-col items-center">
-      <h1 class="text-3xl font-black text-primary">Astro setup boilerplate!</h1>
-      <small class="inline-block"
-        >Be happy man, less JS then you have of lifespan!</small
-      >
-      <ThemeSwitcher/>
+<SimpleLayout title="Home | PixelPlay" animateHeader={true}>
+  <section class="relative">
+    <BannerCarousel items={BANNERS} id="home" />
+    <!--    <div class="absolute animate-home-banner inset-0 z-[1] w-full h-screen bg-basis-background text-basis flex items-center justify-center">
+        <h1 class="text-4xl uppercase ">Bem vindo ao <span class="text-primary">Pixel Play!</span></h1>
+    </div> -->
+  </section>
+  <Section>
+    <SectionHeading type="h2" level="h2">Aguardados do ano!</SectionHeading>
+    <CardCarousel items={AWAITED_CARDS} id="best-from-years" />
+  </Section>
+  <Section>
+    <SectionHeading type="h2" level="h2">
+      Os melhores de 2023 e 2022
+    </SectionHeading>
+    <CardCarousel items={MAIN_CARDS} id="best-from-years" />
+  </Section>
+  <Section>
+    <SectionHeading type="h2" level="h2">Gratuitos da semana</SectionHeading>
+    <CardCarousel items={FREE_CARDS} id="weekly-free" />
+  </Section>
+  <Section>
+    <SectionHeading type="h2" center level="h2">
+      Seleção especial
+    </SectionHeading>
+    <div class="grid grid-cols-3 gap-6">
+      <HighlightColumn
+        items={HIGHLIGHTS_BEST_SELLERS}
+        title="Mais vendidos"
+        to="#"
+      />
+      <HighlightColumn items={HIGHLIGHTS_RELEASES} title="Lançamentos" to="#" />
+      <HighlightColumn items={HIGHLIGHTS_COMING_SOON} title="Em breve" to="#" />
     </div>
-  </main>
-</RootLayout>
+  </Section>
+  <Section>
+    <SectionHeading type="h2" level="h2" center>Mais populares</SectionHeading>
+    <Mosaic items={MOSAIC_ITEMS} />
+  </Section>
+</SimpleLayout>
